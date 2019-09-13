@@ -56,16 +56,16 @@ public class Order extends IdEntity {
     private BigDecimal discountAmount;
 
     @ApiModelProperty("支付方式：0->未支付；1->支付宝；2->微信")
-    private PayType payType;
+    private Integer payType;
 
     @ApiModelProperty("订单来源：0->pc订单；1->app订单")
-    private SourceType sourceType;
+    private Integer sourceType;
 
     @ApiModelProperty("订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单")
-    private OrderStatus orderStatus;
+    private Integer status;
 
     @ApiModelProperty("订单类型：0->正常订单；1->秒杀订单")
-    private OrderType orderType;
+    private Integer orderType;
 
     @ApiModelProperty("物流公司(配送方式)")
     private String deliveryCompany;
@@ -86,7 +86,7 @@ public class Order extends IdEntity {
     private String promotionInfo;
 
     @ApiModelProperty("发票类型：0->不开发票；1->电子发票；2->纸质发票")
-    private BillType billType;
+    private Integer billType;
 
     @ApiModelProperty("发票抬头")
     private String billHeader;
