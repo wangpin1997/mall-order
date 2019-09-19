@@ -5,10 +5,7 @@ import cn.wpin.mall.portal.entity.ConfirmOrderResult;
 import cn.wpin.mall.portal.entity.OrderParam;
 import cn.wpin.mall.user.entity.Member;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author wangpin
@@ -61,6 +58,10 @@ public interface PortalOrderClient {
      * @param orderId
      * @return
      */
-    @RequestMapping(value = "portal/order/cancelOrder", method = RequestMethod.POST)
-    CommonResult cancelOrder(Long orderId);
+    @RequestMapping(value = "portal/order/sendDelayMessageCancelOrder", method = RequestMethod.POST)
+    long sendDelayMessageCancelOrder(@RequestParam Long orderId);
+
+
+    @PostMapping("portal/order/cancelOrder")
+    void cancelOrder(@RequestParam Long orderId);
 }

@@ -318,8 +318,7 @@ public class PortalOrderService {
     public long sendDelayMessageCancelOrder(Long orderId) {
         //获取订单超时时间
         OrderSetting orderSetting = orderSettingMapper.selectByPrimaryKey(1L);
-        long delayTimes = orderSetting.getNormalOrderOvertime() * 60 * 1000;
-        return delayTimes;
+        return orderSetting.getNormalOrderOvertime() * 60 * 1000;
     }
 
 

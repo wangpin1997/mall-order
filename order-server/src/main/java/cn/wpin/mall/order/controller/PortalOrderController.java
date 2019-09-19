@@ -53,9 +53,13 @@ public class PortalOrderController {
     }
 
     @ApiOperation("取消单个超时订单")
-    @RequestMapping(value = "/cancelOrder", method = RequestMethod.POST)
-    public CommonResult cancelOrder(Long orderId) {
-        portalOrderService.sendDelayMessageCancelOrder(orderId);
-        return CommonResult.success(null);
+    @RequestMapping(value = "/sendDelayMessageCancelOrder", method = RequestMethod.POST)
+    public long sendDelayMessageCancelOrder(@RequestParam Long orderId) {
+        return portalOrderService.sendDelayMessageCancelOrder(orderId);
+    }
+
+    @PostMapping("/cancelOrder")
+    public void cancelOrder(@RequestParam Long orderId){
+        portalOrderService.cancelOrder(orderId);
     }
 }
