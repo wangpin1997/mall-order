@@ -4,12 +4,14 @@ package cn.wpin.mall.order.service;
 import cn.wpin.mall.order.entity.CartItem;
 import cn.wpin.mall.order.example.CartItemExample;
 import cn.wpin.mall.order.mapper.CartItemMapper;
+import cn.wpin.mall.portal.entity.CartPromotionItem;
 import cn.wpin.mall.user.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +23,9 @@ import java.util.List;
 public class CartItemService {
     @Autowired
     private CartItemMapper cartItemMapper;
+
+    @Autowired
+    private PromotionService promotionService;
 
 
 
@@ -70,6 +75,14 @@ public class CartItemService {
         return cartItemMapper.selectByExample(example);
     }
 
+    public List<CartPromotionItem> listPromotion(Long id) {
+        List<CartItem> cartItemList = list(id);
+        List<CartPromotionItem> cartPromotionItemList = new ArrayList<>();
+        if(!CollectionUtils.isEmpty(cartItemList)){
+            cartPromotionItemList = promotionService.calcCartPromotion(cartItemList);
+        }
+        return cartPromotionItemList;
+    }
 
     public int updateQuantity(Long id, Long memberId, Integer quantity) {
         CartItem cartItem = new CartItem();
