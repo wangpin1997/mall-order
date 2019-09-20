@@ -27,8 +27,8 @@ public class CartItemController {
 
     @ApiOperation("添加商品到购物车")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public CommonResult add(@RequestBody CartItem cartItem,@RequestBody Member currentMember) {
-        int count = cartItemService.add(cartItem,currentMember);
+    public CommonResult add(@RequestBody CartItem cartItem,@RequestParam Long id,@RequestParam String name) {
+        int count = cartItemService.add(cartItem,id,name);
         if (count > 0) {
             return CommonResult.success(count);
         }
@@ -64,8 +64,9 @@ public class CartItemController {
     @ApiOperation("修改购物车中商品的规格")
     @RequestMapping(value = "/update/attr", method = RequestMethod.POST)
     public CommonResult updateAttr(@RequestBody CartItem cartItem,
-                                   @RequestBody Member currentMember) {
-        int count = cartItemService.updateAttr(cartItem,currentMember);
+                                   @RequestParam Long id,
+                                   @RequestParam String name) {
+        int count = cartItemService.updateAttr(cartItem,id,name);
         if (count > 0) {
             return CommonResult.success(count);
         }

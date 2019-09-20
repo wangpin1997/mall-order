@@ -29,10 +29,10 @@ public class CartItemService {
 
 
 
-    public int add(CartItem cartItem,Member currentMember) {
+    public int add(CartItem cartItem,Long id, String name) {
         int count;
-        cartItem.setMemberId(currentMember.getId());
-        cartItem.setMemberNickname(currentMember.getNickname());
+        cartItem.setMemberId(id);
+        cartItem.setMemberNickname(name);
         cartItem.setDeleteStatus(0);
         CartItem existCartItem = getCartItem(cartItem);
         if (existCartItem == null) {
@@ -102,7 +102,7 @@ public class CartItemService {
     }
 
 
-    public int updateAttr(CartItem cartItem,Member currentMember) {
+    public int updateAttr(CartItem cartItem,Long id,String name) {
         //删除原购物车信息
         CartItem updateCart = new CartItem();
         updateCart.setId(cartItem.getId());
@@ -110,7 +110,7 @@ public class CartItemService {
         updateCart.setDeleteStatus(1);
         cartItemMapper.updateByPrimaryKeySelective(updateCart);
         cartItem.setId(null);
-        add(cartItem,currentMember);
+        add(cartItem,id,name);
         return 1;
     }
 
