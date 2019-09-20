@@ -35,9 +35,8 @@ public class PortalOrderController {
     @ApiOperation("根据购物车信息生成订单")
     @RequestMapping(value = "/generateOrder", method = RequestMethod.POST)
     public Object generateOrder(@RequestBody OrderParam orderParam,
-                                @RequestBody Member member,
                                 @RequestParam String orderSn) {
-        return portalOrderService.generateOrder(orderParam, member, orderSn);
+        return portalOrderService.generateOrder(orderParam, orderParam.getMember(), orderSn);
     }
 
     @ApiOperation("支付成功的回调")

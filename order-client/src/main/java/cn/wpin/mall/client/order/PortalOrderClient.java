@@ -26,13 +26,11 @@ public interface PortalOrderClient {
      * 根据购物车信息生成订单
      *
      * @param orderParam
-     * @param member
      * @param orderSn
      * @return
      */
     @RequestMapping(value = "portal/order/generateOrder", method = RequestMethod.POST)
     Object generateOrder(@RequestBody OrderParam orderParam,
-                         @RequestBody Member member,
                          @RequestParam String orderSn);
 
     /**
