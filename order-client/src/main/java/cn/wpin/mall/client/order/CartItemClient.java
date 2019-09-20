@@ -2,13 +2,11 @@ package cn.wpin.mall.client.order;
 
 import cn.wpin.mall.common.entity.CommonResult;
 import cn.wpin.mall.order.entity.CartItem;
+import cn.wpin.mall.portal.entity.CartPromotionItem;
 import cn.wpin.mall.user.entity.Member;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,4 +44,7 @@ public interface CartItemClient {
     @ApiOperation("清空购物车")
     @RequestMapping(value = "cart/clear", method = RequestMethod.POST)
     CommonResult clear(@RequestBody Member currentMember);
+
+    @GetMapping("cart/listPromotion")
+    List<CartPromotionItem> listPromotion(@RequestParam Long id);
 }

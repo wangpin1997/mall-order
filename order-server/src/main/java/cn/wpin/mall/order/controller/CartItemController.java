@@ -4,6 +4,7 @@ package cn.wpin.mall.order.controller;
 import cn.wpin.mall.common.entity.CommonResult;
 import cn.wpin.mall.order.entity.CartItem;
 import cn.wpin.mall.order.service.CartItemService;
+import cn.wpin.mall.portal.entity.CartPromotionItem;
 import cn.wpin.mall.user.entity.Member;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -40,6 +41,12 @@ public class CartItemController {
         List<CartItem> cartItemList = cartItemService.list(currentMember.getId());
         return CommonResult.success(cartItemList);
     }
+
+    @GetMapping("listPromotion")
+    public List<CartPromotionItem> listPromotion(@RequestParam Long id){
+        return cartItemService.listPromotion(id);
+    }
+
 
     @ApiOperation("修改购物车中某个商品的数量")
     @RequestMapping(value = "/update/quantity", method = RequestMethod.GET)
