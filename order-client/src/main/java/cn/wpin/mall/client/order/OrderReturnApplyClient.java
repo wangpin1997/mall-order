@@ -24,8 +24,8 @@ public interface OrderReturnApplyClient {
      * @param pageNum
      * @return
      */
-    @RequestMapping(value = "returnApply/list", method = RequestMethod.GET)
-    CommonPage<OrderReturnApply> list(ReturnApplyQueryParam queryParam,
+    @RequestMapping(value = "returnApply/list", method = RequestMethod.POST)
+    CommonPage<OrderReturnApply> list(@RequestBody ReturnApplyQueryParam queryParam,
                                       @RequestParam(value = "pageSize") Integer pageSize,
                                       @RequestParam(value = "pageNum") Integer pageNum);
 
@@ -45,7 +45,7 @@ public interface OrderReturnApplyClient {
      * @return
      */
     @RequestMapping(value = "returnApply/{id}", method = RequestMethod.GET)
-    OrderReturnApplyResult getItem(@PathVariable Long id);
+    OrderReturnApplyResult getItem(@PathVariable("id") Long id);
 
     /**
      * 修改申请状态
@@ -55,5 +55,5 @@ public interface OrderReturnApplyClient {
      * @return
      */
     @RequestMapping(value = "returnApply/update/status/{id}", method = RequestMethod.POST)
-    int updateStatus(@PathVariable Long id, @RequestBody UpdateStatusParam statusParam);
+    int updateStatus(@PathVariable("id") Long id, @RequestBody UpdateStatusParam statusParam);
 }

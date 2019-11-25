@@ -31,7 +31,7 @@ public interface PortalOrderClient {
      */
     @RequestMapping(value = "portal/order/generateOrder", method = RequestMethod.POST)
     Object generateOrder(@RequestBody OrderParam orderParam,
-                         @RequestParam String orderSn);
+                         @RequestParam("orderSn") String orderSn);
 
     /**
      * 支付成功的回调
@@ -40,7 +40,7 @@ public interface PortalOrderClient {
      * @return
      */
     @RequestMapping(value = "portal/order/paySuccess", method = RequestMethod.POST)
-    Object paySuccess(@RequestParam Long orderId);
+    Object paySuccess(@RequestParam("orderId") Long orderId);
 
     /**
      * 自动取消超时订单
@@ -57,9 +57,9 @@ public interface PortalOrderClient {
      * @return
      */
     @RequestMapping(value = "portal/order/sendDelayMessageCancelOrder", method = RequestMethod.POST)
-    long sendDelayMessageCancelOrder(@RequestParam Long orderId);
+    long sendDelayMessageCancelOrder(@RequestParam("orderId") Long orderId);
 
 
     @PostMapping("portal/order/cancelOrder")
-    void cancelOrder(@RequestParam Long orderId);
+    void cancelOrder(@RequestParam("orderId") Long orderId);
 }

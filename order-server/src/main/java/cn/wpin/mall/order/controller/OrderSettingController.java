@@ -22,13 +22,13 @@ public class OrderSettingController {
 
     @ApiOperation("获取指定订单设置")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public OrderSetting getItem(@PathVariable Long id) {
+    public OrderSetting getItem(@PathVariable("id") Long id) {
         return orderSettingService.getItem(id);
     }
 
     @ApiOperation("修改指定订单设置")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public int update(@PathVariable Long id, @RequestBody OrderSetting orderSetting) {
+    public int update(@PathVariable("id") Long id, @RequestBody OrderSetting orderSetting) {
         return orderSettingService.update(id,orderSetting);
     }
 }

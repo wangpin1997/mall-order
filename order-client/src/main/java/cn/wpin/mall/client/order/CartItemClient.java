@@ -24,7 +24,7 @@ public interface CartItemClient {
      * @return
      */
     @RequestMapping(value = "cart/add", method = RequestMethod.POST)
-    CommonResult add(@RequestBody CartItem cartItem, @RequestParam Long id, @RequestParam String name);
+    CommonResult add(@RequestBody CartItem cartItem, @RequestParam("id") Long id, @RequestParam("name") String name);
 
     /**
      * 获取某个会员的购物车列表
@@ -32,7 +32,7 @@ public interface CartItemClient {
      * @param currentMember
      * @return
      */
-    @RequestMapping(value = "cart/list", method = RequestMethod.GET)
+    @RequestMapping(value = "cart/list", method = RequestMethod.POST)
     CommonResult<List<CartItem>> list(@RequestBody Member currentMember);
 
     /**
@@ -43,9 +43,9 @@ public interface CartItemClient {
      * @param currentMember
      * @return
      */
-    @RequestMapping(value = "cart/update/quantity", method = RequestMethod.GET)
-    CommonResult updateQuantity(@RequestParam Long id,
-                                @RequestParam Integer quantity,
+    @RequestMapping(value = "cart/update/quantity", method = RequestMethod.POST)
+    CommonResult updateQuantity(@RequestParam("id") Long id,
+                                @RequestParam("quantity") Integer quantity,
                                 @RequestBody Member currentMember);
 
 
@@ -59,8 +59,8 @@ public interface CartItemClient {
      */
     @RequestMapping(value = "cart/update/attr", method = RequestMethod.POST)
     CommonResult updateAttr(@RequestBody CartItem cartItem,
-                            @RequestParam Long id,
-                            @RequestParam String name);
+                            @RequestParam("id") Long id,
+                            @RequestParam("name") String name);
 
     /**
      * 删除购物车中的某个商品
@@ -83,5 +83,5 @@ public interface CartItemClient {
     CommonResult clear(@RequestBody Member currentMember);
 
     @GetMapping("cart/listPromotion")
-    List<CartPromotionItem> listPromotion(@RequestParam Long id);
+    List<CartPromotionItem> listPromotion(@RequestParam("id")Long id);
 }

@@ -35,13 +35,13 @@ public class PortalOrderController {
     @ApiOperation("根据购物车信息生成订单")
     @RequestMapping(value = "/generateOrder", method = RequestMethod.POST)
     public Object generateOrder(@RequestBody OrderParam orderParam,
-                                @RequestParam String orderSn) {
+                                @RequestParam("orderSn") String orderSn) {
         return portalOrderService.generateOrder(orderParam, orderParam.getMember(), orderSn);
     }
 
     @ApiOperation("支付成功的回调")
     @RequestMapping(value = "/paySuccess", method = RequestMethod.POST)
-    public Object paySuccess(@RequestParam Long orderId) {
+    public Object paySuccess(@RequestParam("orderId") Long orderId) {
         return portalOrderService.paySuccess(orderId);
     }
 
@@ -53,12 +53,12 @@ public class PortalOrderController {
 
     @ApiOperation("取消单个超时订单")
     @RequestMapping(value = "/sendDelayMessageCancelOrder", method = RequestMethod.POST)
-    public long sendDelayMessageCancelOrder(@RequestParam Long orderId) {
+    public long sendDelayMessageCancelOrder(@RequestParam("orderId") Long orderId) {
         return portalOrderService.sendDelayMessageCancelOrder(orderId);
     }
 
     @PostMapping("/cancelOrder")
-    public void cancelOrder(@RequestParam Long orderId){
+    public void cancelOrder(@RequestParam("orderId") Long orderId){
         portalOrderService.cancelOrder(orderId);
     }
 }

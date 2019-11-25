@@ -20,7 +20,7 @@ public interface OrderSettingClient {
      * @return
      */
     @RequestMapping(value = "orderSetting/{id}", method = RequestMethod.GET)
-    OrderSetting getItem(@PathVariable Long id);
+    OrderSetting getItem(@PathVariable("id") Long id);
 
     /**
      * 修改指定订单设置
@@ -30,5 +30,5 @@ public interface OrderSettingClient {
      * @return
      */
     @RequestMapping(value = "orderSetting/update/{id}", method = RequestMethod.POST)
-    int update(@PathVariable Long id, @RequestBody OrderSetting orderSetting);
+    int update(@PathVariable("id") Long id, @RequestBody OrderSetting orderSetting);
 }

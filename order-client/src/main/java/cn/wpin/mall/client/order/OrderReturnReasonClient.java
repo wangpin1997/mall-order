@@ -31,7 +31,7 @@ public interface OrderReturnReasonClient {
      * @return
      */
     @RequestMapping(value = "returnReason/update/{id}", method = RequestMethod.POST)
-    int update(@PathVariable Long id, @RequestBody OrderReturnReason returnReason);
+    int update(@PathVariable("id") Long id, @RequestBody OrderReturnReason returnReason);
 
     /**
      * 批量删除退货原因
@@ -60,7 +60,7 @@ public interface OrderReturnReasonClient {
      * @return
      */
     @RequestMapping(value = "returnReason/{id}", method = RequestMethod.GET)
-    OrderReturnReason getItem(@PathVariable Long id);
+    OrderReturnReason getItem(@PathVariable("id") Long id);
 
     /**
      * 修改退货原因启用状态

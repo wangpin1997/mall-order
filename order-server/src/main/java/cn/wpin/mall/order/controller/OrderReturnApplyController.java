@@ -27,8 +27,8 @@ public class OrderReturnApplyController {
     private OrderReturnApplyService returnApplyService;
 
     @ApiOperation("分页查询退货申请")
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public CommonPage<OrderReturnApply> list(ReturnApplyQueryParam queryParam,
+    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    public CommonPage<OrderReturnApply> list(@RequestBody ReturnApplyQueryParam queryParam,
                                              @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                                              @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         List<OrderReturnApply> returnApplyList = returnApplyService.list(queryParam, pageSize, pageNum);
@@ -43,13 +43,13 @@ public class OrderReturnApplyController {
 
     @ApiOperation("获取退货申请详情")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public OrderReturnApplyResult getItem(@PathVariable Long id) {
+    public OrderReturnApplyResult getItem(@PathVariable("id") Long id) {
         return returnApplyService.getItem(id);
     }
 
     @ApiOperation("修改申请状态")
     @RequestMapping(value = "/update/status/{id}", method = RequestMethod.POST)
-    public int updateStatus(@PathVariable Long id, @RequestBody UpdateStatusParam statusParam) {
+    public int updateStatus(@PathVariable("id") Long id, @RequestBody UpdateStatusParam statusParam) {
         return returnApplyService.updateStatus(id, statusParam);
     }
 

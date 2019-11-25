@@ -31,7 +31,7 @@ public class OrderReturnReasonController {
 
     @ApiOperation("修改退货原因")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public int update(@PathVariable Long id, @RequestBody OrderReturnReason returnReason) {
+    public int update(@PathVariable("id") Long id, @RequestBody OrderReturnReason returnReason) {
         return orderReturnReasonService.update(id, returnReason);
     }
 
@@ -51,7 +51,7 @@ public class OrderReturnReasonController {
 
     @ApiOperation("获取单个退货原因详情信息")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public OrderReturnReason getItem(@PathVariable Long id) {
+    public OrderReturnReason getItem(@PathVariable("id") Long id) {
         return orderReturnReasonService.getItem(id);
     }
 

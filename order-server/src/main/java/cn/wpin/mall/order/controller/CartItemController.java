@@ -27,7 +27,7 @@ public class CartItemController {
 
     @ApiOperation("添加商品到购物车")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public CommonResult add(@RequestBody CartItem cartItem,@RequestParam Long id,@RequestParam String name) {
+    public CommonResult add(@RequestBody CartItem cartItem,@RequestParam("id") Long id,@RequestParam("name") String name) {
         int count = cartItemService.add(cartItem,id,name);
         if (count > 0) {
             return CommonResult.success(count);
@@ -36,22 +36,22 @@ public class CartItemController {
     }
 
     @ApiOperation("获取某个会员的购物车列表")
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.POST)
     public CommonResult<List<CartItem>> list(@RequestBody Member currentMember) {
         List<CartItem> cartItemList = cartItemService.list(currentMember.getId());
         return CommonResult.success(cartItemList);
     }
 
     @GetMapping("listPromotion")
-    public List<CartPromotionItem> listPromotion(@RequestParam Long id){
+    public List<CartPromotionItem> listPromotion(@RequestParam("id")Long id){
         return cartItemService.listPromotion(id);
     }
 
 
     @ApiOperation("修改购物车中某个商品的数量")
-    @RequestMapping(value = "/update/quantity", method = RequestMethod.GET)
-    public CommonResult updateQuantity(@RequestParam Long id,
-                                       @RequestParam Integer quantity,
+    @RequestMapping(value = "/update/quantity", method = RequestMethod.POST)
+    public CommonResult updateQuantity(@RequestParam("id") Long id,
+                                       @RequestParam("quantity") Integer quantity,
                                        @RequestBody Member currentMember) {
         int count = cartItemService.updateQuantity(id, currentMember.getId(), quantity);
         if (count > 0) {
@@ -64,8 +64,8 @@ public class CartItemController {
     @ApiOperation("修改购物车中商品的规格")
     @RequestMapping(value = "/update/attr", method = RequestMethod.POST)
     public CommonResult updateAttr(@RequestBody CartItem cartItem,
-                                   @RequestParam Long id,
-                                   @RequestParam String name) {
+                                   @RequestParam("id") Long id,
+                                   @RequestParam("name") String name) {
         int count = cartItemService.updateAttr(cartItem,id,name);
         if (count > 0) {
             return CommonResult.success(count);
