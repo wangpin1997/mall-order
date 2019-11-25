@@ -25,8 +25,8 @@ public class OrderController {
     private OrderService orderService;
 
     @ApiOperation("查询订单")
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public CommonPage<Order> list(OrderQueryParam queryParam,
+    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    public CommonPage<Order> list(@RequestBody OrderQueryParam queryParam,
                                   @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                                   @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         List<Order> orderList = orderService.list(queryParam, pageSize, pageNum);
@@ -41,7 +41,7 @@ public class OrderController {
 
     @ApiOperation("批量关闭订单")
     @RequestMapping(value = "/update/close", method = RequestMethod.POST)
-    public int close(@RequestParam("ids") List<Long> ids, @RequestParam String note) {
+    public int close(@RequestParam("ids") List<Long> ids, @RequestParam("note") String note) {
         return orderService.close(ids, note);
     }
 

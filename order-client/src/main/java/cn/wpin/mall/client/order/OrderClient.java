@@ -22,8 +22,8 @@ public interface OrderClient {
      * @param pageNum
      * @return
      */
-    @RequestMapping(value = "order/list", method = RequestMethod.GET)
-    CommonPage<Order> list(OrderQueryParam queryParam,
+    @RequestMapping(value = "order/list", method = RequestMethod.POST)
+    CommonPage<Order> list(@RequestBody OrderQueryParam queryParam,
                            @RequestParam(value = "pageSize") Integer pageSize,
                            @RequestParam(value = "pageNum") Integer pageNum);
 
@@ -44,7 +44,7 @@ public interface OrderClient {
      * @return
      */
     @RequestMapping(value = "order/update/close", method = RequestMethod.POST)
-    int close(@RequestParam("ids") List<Long> ids, @RequestParam String note);
+    int close(@RequestParam("ids") List<Long> ids, @RequestParam("note") String note);
 
     /**
      * 批量删除订单
