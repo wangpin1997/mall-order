@@ -4,8 +4,7 @@ package cn.wpin.mall.order.service;
 import cn.wpin.mall.order.entity.CartItem;
 import cn.wpin.mall.order.example.CartItemExample;
 import cn.wpin.mall.order.mapper.CartItemMapper;
-import cn.wpin.mall.portal.entity.CartPromotionItem;
-import cn.wpin.mall.user.entity.Member;
+import cn.wpin.mall.sale.entity.CartPromotionItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -17,6 +16,7 @@ import java.util.List;
 
 /**
  * 购物车管理Service实现类
+ *
  * @author wangpin
  */
 @Service
@@ -28,8 +28,7 @@ public class CartItemService {
     private PromotionService promotionService;
 
 
-
-    public int add(CartItem cartItem,Long id, String name) {
+    public int add(CartItem cartItem, Long id, String name) {
         int count;
         cartItem.setMemberId(id);
         cartItem.setMemberNickname(name);
@@ -78,7 +77,7 @@ public class CartItemService {
     public List<CartPromotionItem> listPromotion(Long id) {
         List<CartItem> cartItemList = list(id);
         List<CartPromotionItem> cartPromotionItemList = new ArrayList<>();
-        if(!CollectionUtils.isEmpty(cartItemList)){
+        if (!CollectionUtils.isEmpty(cartItemList)) {
             cartPromotionItemList = promotionService.calcCartPromotion(cartItemList);
         }
         return cartPromotionItemList;
@@ -102,7 +101,7 @@ public class CartItemService {
     }
 
 
-    public int updateAttr(CartItem cartItem,Long id,String name) {
+    public int updateAttr(CartItem cartItem, Long id, String name) {
         //删除原购物车信息
         CartItem updateCart = new CartItem();
         updateCart.setId(cartItem.getId());
@@ -110,7 +109,7 @@ public class CartItemService {
         updateCart.setDeleteStatus(1);
         cartItemMapper.updateByPrimaryKeySelective(updateCart);
         cartItem.setId(null);
-        add(cartItem,id,name);
+        add(cartItem, id, name);
         return 1;
     }
 
@@ -119,6 +118,6 @@ public class CartItemService {
         record.setDeleteStatus(1);
         CartItemExample example = new CartItemExample();
         example.createCriteria().andMemberIdEqualTo(memberId);
-        return cartItemMapper.updateByExampleSelective(record,example);
+        return cartItemMapper.updateByExampleSelective(record, example);
     }
 }

@@ -4,7 +4,7 @@ package cn.wpin.mall.order.controller;
 import cn.wpin.mall.common.entity.CommonResult;
 import cn.wpin.mall.order.entity.CartItem;
 import cn.wpin.mall.order.service.CartItemService;
-import cn.wpin.mall.portal.entity.CartPromotionItem;
+import cn.wpin.mall.sale.entity.CartPromotionItem;
 import cn.wpin.mall.user.entity.Member;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -43,7 +43,7 @@ public class CartItemController {
     }
 
     @GetMapping("listPromotion")
-    public List<CartPromotionItem> listPromotion(@RequestParam("id")Long id){
+    public List<CartPromotionItem> listPromotion(@RequestParam("id") Long id) {
         return cartItemService.listPromotion(id);
     }
 

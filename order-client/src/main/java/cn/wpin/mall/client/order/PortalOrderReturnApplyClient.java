@@ -1,7 +1,7 @@
 package cn.wpin.mall.client.order;
 
 import cn.wpin.mall.common.entity.CommonResult;
-import cn.wpin.mall.portal.entity.OrderReturnApplyParam;
+import cn.wpin.mall.order.dto.OrderReturnApplyParam;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

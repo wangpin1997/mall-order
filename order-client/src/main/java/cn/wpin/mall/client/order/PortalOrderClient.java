@@ -1,8 +1,8 @@
 package cn.wpin.mall.client.order;
 
 import cn.wpin.mall.common.entity.CommonResult;
-import cn.wpin.mall.portal.entity.ConfirmOrderResult;
-import cn.wpin.mall.portal.entity.OrderParam;
+import cn.wpin.mall.order.entity.ConfirmOrderResult;
+import cn.wpin.mall.order.entity.OrderParam;
 import cn.wpin.mall.user.entity.Member;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;

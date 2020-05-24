@@ -3,11 +3,11 @@ package cn.wpin.mall.order.service;
 import cn.wpin.mall.client.product.PortalProductClient;
 import cn.wpin.mall.order.entity.CartItem;
 
-import cn.wpin.mall.portal.entity.CartPromotionItem;
-import cn.wpin.mall.portal.entity.PromotionProduct;
 import cn.wpin.mall.product.entity.ProductFullReduction;
 import cn.wpin.mall.product.entity.ProductLadder;
+import cn.wpin.mall.product.entity.PromotionProduct;
 import cn.wpin.mall.product.entity.SkuStock;
+import cn.wpin.mall.sale.entity.CartPromotionItem;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

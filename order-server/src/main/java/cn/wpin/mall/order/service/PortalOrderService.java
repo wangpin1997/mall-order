@@ -10,22 +10,14 @@ import cn.wpin.mall.common.entity.CommonResult;
 import cn.wpin.mall.order.dao.PortalOrderDao;
 import cn.wpin.mall.order.dao.PortalOrderItemDao;
 import cn.wpin.mall.order.dto.OrderDetail;
-import cn.wpin.mall.order.entity.Order;
-import cn.wpin.mall.order.entity.OrderItem;
-import cn.wpin.mall.order.entity.OrderSetting;
+import cn.wpin.mall.order.entity.*;
 import cn.wpin.mall.order.example.OrderExample;
 import cn.wpin.mall.order.example.OrderItemExample;
 import cn.wpin.mall.order.mapper.OrderItemMapper;
 import cn.wpin.mall.order.mapper.OrderMapper;
 import cn.wpin.mall.order.mapper.OrderSettingMapper;
-import cn.wpin.mall.portal.entity.CartPromotionItem;
-import cn.wpin.mall.portal.entity.ConfirmOrderResult;
-import cn.wpin.mall.portal.entity.CouponHistoryDetail;
-import cn.wpin.mall.portal.entity.OrderParam;
 import cn.wpin.mall.product.entity.SkuStock;
-import cn.wpin.mall.sale.entity.Coupon;
-import cn.wpin.mall.sale.entity.CouponProductCategoryRelation;
-import cn.wpin.mall.sale.entity.CouponProductRelation;
+import cn.wpin.mall.sale.entity.*;
 import cn.wpin.mall.user.entity.IntegrationConsumeSetting;
 import cn.wpin.mall.user.entity.Member;
 import cn.wpin.mall.user.entity.MemberReceiveAddress;
@@ -89,7 +81,7 @@ public class PortalOrderService {
         List<MemberReceiveAddress> memberReceiveAddressList = memberReceiveAddressClient.list(currentMember);
         result.setMemberReceiveAddressList(memberReceiveAddressList);
         //获取用户可用优惠券列表
-        List<CouponHistoryDetail> couponHistoryDetailList = memberCouponClient.listCart(cartPromotionItemList, 1,currentMember).getData();
+        List<CouponHistoryDetail> couponHistoryDetailList = memberCouponClient.listCart(cartPromotionItemList, 1, currentMember).getData();
         result.setCouponHistoryDetailList(couponHistoryDetailList);
         //获取用户积分
         result.setMemberIntegration(currentMember.getIntegration());

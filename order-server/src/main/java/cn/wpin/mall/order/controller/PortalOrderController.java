@@ -2,9 +2,9 @@ package cn.wpin.mall.order.controller;
 
 
 import cn.wpin.mall.common.entity.CommonResult;
+import cn.wpin.mall.order.entity.ConfirmOrderResult;
+import cn.wpin.mall.order.entity.OrderParam;
 import cn.wpin.mall.order.service.PortalOrderService;
-import cn.wpin.mall.portal.entity.ConfirmOrderResult;
-import cn.wpin.mall.portal.entity.OrderParam;
 import cn.wpin.mall.user.entity.Member;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -58,7 +58,7 @@ public class PortalOrderController {
     }
 
     @PostMapping("/cancelOrder")
-    public void cancelOrder(@RequestParam("orderId") Long orderId){
+    public void cancelOrder(@RequestParam("orderId") Long orderId) {
         portalOrderService.cancelOrder(orderId);
     }
 }

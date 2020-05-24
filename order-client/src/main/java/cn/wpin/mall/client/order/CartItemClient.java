@@ -2,7 +2,7 @@ package cn.wpin.mall.client.order;
 
 import cn.wpin.mall.common.entity.CommonResult;
 import cn.wpin.mall.order.entity.CartItem;
-import cn.wpin.mall.portal.entity.CartPromotionItem;
+import cn.wpin.mall.sale.entity.CartPromotionItem;
 import cn.wpin.mall.user.entity.Member;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
@@ -83,5 +83,5 @@ public interface CartItemClient {
     CommonResult clear(@RequestBody Member currentMember);
 
     @GetMapping("cart/listPromotion")
-    List<CartPromotionItem> listPromotion(@RequestParam("id")Long id);
+    List<CartPromotionItem> listPromotion(@RequestParam("id") Long id);
 }

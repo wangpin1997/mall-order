@@ -2,8 +2,8 @@ package cn.wpin.mall.order.controller;
 
 
 import cn.wpin.mall.common.entity.CommonResult;
+import cn.wpin.mall.order.dto.OrderReturnApplyParam;
 import cn.wpin.mall.order.service.PortalOrderReturnApplyService;
-import cn.wpin.mall.portal.entity.OrderReturnApplyParam;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
